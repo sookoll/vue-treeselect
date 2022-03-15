@@ -18,6 +18,7 @@
     render(context) {
       const instance = context.instance
 
+      if (!instance) return null;
       if (!("name" in instance)) return null;
 
       if (!instance.name || instance.disabled || !instance.hasValue) return null
