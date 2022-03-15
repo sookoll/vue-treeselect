@@ -18,6 +18,8 @@
     render(context) {
       const instance = context.instance
 
+      if (!("name" in instance)) return null;
+
       if (!instance.name || instance.disabled || !instance.hasValue) return null
 
       let stringifiedValues = instance.internalValue.map(stringifyValue)
