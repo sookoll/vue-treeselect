@@ -302,9 +302,9 @@
     render() {
       return (
         <div ref="menu-container" class="vue-treeselect__menu-container" style={this.menuContainerStyle}>
-          <transition name="vue-treeselect__menu--transition">
+          <div name="vue-treeselect__menu--transition">
             {this.renderMenu()}
-          </transition>
+          </div>
         </div>
       )
     },

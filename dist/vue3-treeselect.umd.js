@@ -3790,8 +3790,6 @@ const MultiValueItem_exports_ = MultiValueItemvue_type_script_lang_js;
     }
   },
   render: function render() {
-    var _this = this;
-
     var renderValueContainer = this.$parent.renderValueContainer; // const transitionGroupProps = {
     //   props: {
     //     tag: 'div',
@@ -3800,21 +3798,15 @@ const MultiValueItem_exports_ = MultiValueItemvue_type_script_lang_js;
     //   },
     // }
 
-    return renderValueContainer((0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)((0,external_commonjs_vue_commonjs2_vue_root_Vue_.resolveComponent)("transition-group"), {
+    return renderValueContainer((0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)("div", {
       "class": "vue-treeselect__multi-value",
-      "tag": "div",
-      "name": "vue-treeselect__multi-value-item--transition",
-      "appear": true
-    }, {
-      default: function _default() {
-        return [_this.renderMultiValueItems(), _this.renderExceedLimitTip(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)(Placeholder, {
-          "key": "placeholder"
-        }, null), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)(Input, {
-          "ref": "input",
-          "key": "input"
-        }, null)];
-      }
-    }));
+      "name": "vue-treeselect__multi-value-item--transition"
+    }, [this.renderMultiValueItems(), this.renderExceedLimitTip(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)(Placeholder, {
+      "key": "placeholder"
+    }, null), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)(Input, {
+      "ref": "input",
+      "key": "input"
+    }, null)]));
   }
 });
 ;// CONCATENATED MODULE: ./src/components/MultiValue.vue
@@ -3902,8 +3894,6 @@ const Arrow_exports_ = /*#__PURE__*/(0,exportHelper/* default */.Z)(Arrowvue_typ
   methods: {
     renderX: function renderX() {
       var instance = this.instance;
-      console.log("this", this);
-      window.sadfasdf = this;
       var title = instance.multiple ? instance.clearAllText : instance.clearValueText;
       if (!this.shouldShowX) return null;
       return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)("div", {
@@ -4216,11 +4206,6 @@ function Optionvue_type_script_lang_js_defineProperty(obj, key, value) { if (key
 
 
 
-
-function _isSlot(s) {
-  return typeof s === 'function' || Object.prototype.toString.call(s) === '[object Object]' && !(0,external_commonjs_vue_commonjs2_vue_root_Vue_.isVNode)(s);
-}
-
 var arrowPlaceholder, checkMark, minusMark;
 var Option = {
   name: 'vue-treeselect--option',
@@ -4280,16 +4265,11 @@ var Option = {
         return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)("div", {
           "class": "vue-treeselect__option-arrow-container",
           "onMousedown": this.handleMouseDownOnArrow
-        }, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)((0,external_commonjs_vue_commonjs2_vue_root_Vue_.resolveComponent)("transition"), {
-          "name": "vue-treeselect__option-arrow--prepare",
-          "appear": true
-        }, {
-          default: function _default() {
-            return [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)(Arrow, {
-              "class": arrowClass
-            }, null)];
-          }
-        })]);
+        }, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)("div", {
+          "name": "vue-treeselect__option-arrow--prepare"
+        }, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)(Arrow, {
+          "class": arrowClass
+        }, null)])]);
       } // For leaf nodes, we render a placeholder to keep its label aligned to
       // branch nodes. Unless there is no branch nodes at all (a normal
       // non-tree select).
@@ -4448,8 +4428,6 @@ var Option = {
     })
   },
   render: function render() {
-    var _slot;
-
     var node = this.node;
     var indentLevel = this.instance.shouldFlattenOptions ? 0 : node.level;
 
@@ -4459,13 +4437,7 @@ var Option = {
 
     return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)("div", {
       "class": listItemClass
-    }, [this.renderOption(), node.isBranch ? (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)((0,external_commonjs_vue_commonjs2_vue_root_Vue_.resolveComponent)("transition"), {
-      "name": "vue-treeselect__list--transition"
-    }, _isSlot(_slot = this.renderSubOptionsList()) ? _slot : {
-      default: function _default() {
-        return [_slot];
-      }
-    }) : '']);
+    }, [this.renderOption(), node.isBranch ? (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)("div", null, [this.renderSubOptionsList()]) : '']);
   }
 }; // eslint-disable-next-line vue/require-direct-export
 
@@ -4482,11 +4454,6 @@ const Option_exports_ = Optionvue_type_script_lang_js;
 
 
 
-
-
-function Menuvue_type_script_lang_js_isSlot(s) {
-  return typeof s === 'function' || Object.prototype.toString.call(s) === '[object Object]' && !(0,external_commonjs_vue_commonjs2_vue_root_Vue_.isVNode)(s);
-}
 
 var directionMap = {
   top: 'top',
@@ -4750,19 +4717,13 @@ var directionMap = {
     }
   },
   render: function render() {
-    var _slot;
-
     return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)("div", {
       "ref": "menu-container",
       "class": "vue-treeselect__menu-container",
       "style": this.menuContainerStyle
-    }, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)((0,external_commonjs_vue_commonjs2_vue_root_Vue_.resolveComponent)("transition"), {
+    }, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)("div", {
       "name": "vue-treeselect__menu--transition"
-    }, Menuvue_type_script_lang_js_isSlot(_slot = this.renderMenu()) ? _slot : {
-      default: function _default() {
-        return [_slot];
-      }
-    })]);
+    }, [this.renderMenu()])]);
   }
 });
 ;// CONCATENATED MODULE: ./src/components/Menu.vue
