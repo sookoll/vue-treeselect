@@ -11,26 +11,6 @@
 return /******/ (function() { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 8118:
-/***/ (function(__unused_webpack_module, exports) {
-
-"use strict";
-var __webpack_unused_export__;
-
-__webpack_unused_export__ = ({ value: true });
-// runtime helper for setting properties on components
-// in a tree-shakable way
-exports.Z = (sfc, props) => {
-    const target = sfc.__vccOpts || sfc;
-    for (const [key, val] of props) {
-        target[key] = val;
-    }
-    return target;
-};
-
-
-/***/ }),
-
 /***/ 9662:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
@@ -5003,6 +4983,26 @@ module.exports = toNumber;
 
 /***/ }),
 
+/***/ 3744:
+/***/ (function(__unused_webpack_module, exports) {
+
+"use strict";
+var __webpack_unused_export__;
+
+__webpack_unused_export__ = ({ value: true });
+// runtime helper for setting properties on components
+// in a tree-shakable way
+exports.Z = (sfc, props) => {
+    const target = sfc.__vccOpts || sfc;
+    for (const [key, val] of props) {
+        target[key] = val;
+    }
+    return target;
+};
+
+
+/***/ }),
+
 /***/ 7203:
 /***/ (function(module) {
 
@@ -5132,7 +5132,7 @@ if (typeof window !== 'undefined') {
 
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__(7203);
-;// CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/cli-service/node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/cli-service/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/Treeselect.vue?vue&type=template&id=4fa337e8
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[4]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/Treeselect.vue?vue&type=template&id=4fa337e8
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_HiddenFields = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.resolveComponent)("HiddenFields");
@@ -7463,7 +7463,7 @@ var instanceId = 0;
 });
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.join.js
 var es_array_join = __webpack_require__(9600);
-;// CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/cli-service/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/HiddenFields.vue?vue&type=script&lang=js
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/HiddenFields.vue?vue&type=script&lang=js
 
 
 
@@ -7555,15 +7555,9 @@ function deepExtend(target, source) {
 
   return target;
 }
-;// CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/cli-service/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/Input.vue?vue&type=script&lang=js
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/Input.vue?vue&type=script&lang=js
 
 
-
-
-
-function _isSlot(s) {
-  return typeof s === 'function' || Object.prototype.toString.call(s) === '[object Object]' && !(0,external_commonjs_vue_commonjs2_vue_root_Vue_.isVNode)(s);
-}
 
 var keysThatRequireMenuBeingOpen = [KEY_CODES.ENTER, KEY_CODES.END, KEY_CODES.HOME, KEY_CODES.ARROW_LEFT, KEY_CODES.ARROW_UP, KEY_CODES.ARROW_RIGHT, KEY_CODES.ARROW_DOWN];
 /* harmony default export */ var Inputvue_type_script_lang_js = ({
@@ -7805,11 +7799,7 @@ var keysThatRequireMenuBeingOpen = [KEY_CODES.ENTER, KEY_CODES.END, KEY_CODES.HO
 
       return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)("div", (0,external_commonjs_vue_commonjs2_vue_root_Vue_.mergeProps)({
         "class": "vue-treeselect__input-container"
-      }, props), _isSlot(children) ? children : {
-        default: function _default() {
-          return [children];
-        }
-      });
+      }, props), [children]);
     },
     renderInput: function renderInput() {
       var h = this.$createElement;
@@ -7856,7 +7846,7 @@ var keysThatRequireMenuBeingOpen = [KEY_CODES.ENTER, KEY_CODES.END, KEY_CODES.HO
 const Input_exports_ = Inputvue_type_script_lang_js;
 
 /* harmony default export */ var Input = (Input_exports_);
-;// CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/cli-service/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/Placeholder.vue?vue&type=script&lang=js
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/Placeholder.vue?vue&type=script&lang=js
 
 /* harmony default export */ var Placeholdervue_type_script_lang_js = ({
   name: 'vue-treeselect--placeholder',
@@ -7881,7 +7871,7 @@ const Input_exports_ = Inputvue_type_script_lang_js;
 const Placeholder_exports_ = Placeholdervue_type_script_lang_js;
 
 /* harmony default export */ var Placeholder = (Placeholder_exports_);
-;// CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/cli-service/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/SingleValue.vue?vue&type=script&lang=js
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/SingleValue.vue?vue&type=script&lang=js
 
 
 
@@ -7917,7 +7907,7 @@ const Placeholder_exports_ = Placeholdervue_type_script_lang_js;
 const SingleValue_exports_ = SingleValuevue_type_script_lang_js;
 
 /* harmony default export */ var SingleValue = (SingleValue_exports_);
-;// CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/cli-service/node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/cli-service/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/icons/Delete.vue?vue&type=template&id=12b4a02e
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[4]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/icons/Delete.vue?vue&type=template&id=12b4a02e
 
 var _hoisted_1 = {
   xmlns: "http://www.w3.org/2000/svg",
@@ -7932,12 +7922,12 @@ var _hoisted_3 = [_hoisted_2];
 function Deletevue_type_template_id_12b4a02e_render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("svg", _hoisted_1, _hoisted_3);
 }
-;// CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/cli-service/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/icons/Delete.vue?vue&type=script&lang=js
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/icons/Delete.vue?vue&type=script&lang=js
 /* harmony default export */ var Deletevue_type_script_lang_js = ({
   name: 'vue-treeselect--x'
 });
-// EXTERNAL MODULE: ./node_modules/@vue/cli-service/node_modules/vue-loader/dist/exportHelper.js
-var exportHelper = __webpack_require__(8118);
+// EXTERNAL MODULE: ./node_modules/vue-loader/dist/exportHelper.js
+var exportHelper = __webpack_require__(3744);
 ;// CONCATENATED MODULE: ./src/components/icons/Delete.vue
 
 
@@ -7947,15 +7937,9 @@ var exportHelper = __webpack_require__(8118);
 const Delete_exports_ = /*#__PURE__*/(0,exportHelper/* default */.Z)(Deletevue_type_script_lang_js, [['render',Deletevue_type_template_id_12b4a02e_render]])
 
 /* harmony default export */ var Delete = (Delete_exports_);
-;// CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/cli-service/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/MultiValueItem.vue?vue&type=script&lang=js
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/MultiValueItem.vue?vue&type=script&lang=js
 
 
-
-
-
-function MultiValueItemvue_type_script_lang_js_isSlot(s) {
-  return typeof s === 'function' || Object.prototype.toString.call(s) === '[object Object]' && !(0,external_commonjs_vue_commonjs2_vue_root_Vue_.isVNode)(s);
-}
 
 /* harmony default export */ var MultiValueItemvue_type_script_lang_js = ({
   name: 'vue-treeselect--multi-value-item',
@@ -7994,11 +7978,7 @@ function MultiValueItemvue_type_script_lang_js_isSlot(s) {
       "onMousedown": this.handleMouseDown
     }, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)("span", {
       "class": "vue-treeselect__multi-value-label"
-    }, MultiValueItemvue_type_script_lang_js_isSlot(labelRenderer) ? labelRenderer : {
-      default: function _default() {
-        return [labelRenderer];
-      }
-    }), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)("span", {
+    }, [labelRenderer]), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)("span", {
       "class": "vue-treeselect__icon vue-treeselect__value-remove"
     }, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)(Delete, null, null)])])]);
   }
@@ -8010,7 +7990,7 @@ function MultiValueItemvue_type_script_lang_js_isSlot(s) {
 const MultiValueItem_exports_ = MultiValueItemvue_type_script_lang_js;
 
 /* harmony default export */ var MultiValueItem = (MultiValueItem_exports_);
-;// CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/cli-service/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/MultiValue.vue?vue&type=script&lang=js
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/MultiValue.vue?vue&type=script&lang=js
 
 
 
@@ -8080,7 +8060,7 @@ const MultiValueItem_exports_ = MultiValueItemvue_type_script_lang_js;
 const MultiValue_exports_ = MultiValuevue_type_script_lang_js;
 
 /* harmony default export */ var MultiValue = (MultiValue_exports_);
-;// CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/cli-service/node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/cli-service/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/icons/Arrow.vue?vue&type=template&id=5d5151cb
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[4]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/icons/Arrow.vue?vue&type=template&id=5d5151cb
 
 var Arrowvue_type_template_id_5d5151cb_hoisted_1 = {
   xmlns: "http://www.w3.org/2000/svg",
@@ -8095,7 +8075,7 @@ var Arrowvue_type_template_id_5d5151cb_hoisted_3 = [Arrowvue_type_template_id_5d
 function Arrowvue_type_template_id_5d5151cb_render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("svg", Arrowvue_type_template_id_5d5151cb_hoisted_1, Arrowvue_type_template_id_5d5151cb_hoisted_3);
 }
-;// CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/cli-service/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/icons/Arrow.vue?vue&type=script&lang=js
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/icons/Arrow.vue?vue&type=script&lang=js
 /* harmony default export */ var Arrowvue_type_script_lang_js = ({
   name: 'vue-treeselect--arrow'
 });
@@ -8108,7 +8088,7 @@ function Arrowvue_type_template_id_5d5151cb_render(_ctx, _cache, $props, $setup,
 const Arrow_exports_ = /*#__PURE__*/(0,exportHelper/* default */.Z)(Arrowvue_type_script_lang_js, [['render',Arrowvue_type_template_id_5d5151cb_render]])
 
 /* harmony default export */ var Arrow = (Arrow_exports_);
-;// CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/cli-service/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/Control.vue?vue&type=script&lang=js
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/Control.vue?vue&type=script&lang=js
 
 
 
@@ -8116,11 +8096,6 @@ const Arrow_exports_ = /*#__PURE__*/(0,exportHelper/* default */.Z)(Arrowvue_typ
 
 
 
-
-
-function Controlvue_type_script_lang_js_isSlot(s) {
-  return typeof s === 'function' || Object.prototype.toString.call(s) === '[object Object]' && !(0,external_commonjs_vue_commonjs2_vue_root_Vue_.isVNode)(s);
-}
 
 /* harmony default export */ var Controlvue_type_script_lang_js = ({
   name: 'vue-treeselect--control',
@@ -8235,11 +8210,7 @@ function Controlvue_type_script_lang_js_isSlot(s) {
       var h = this.$createElement;
       return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)("div", {
         "class": "vue-treeselect__value-container"
-      }, Controlvue_type_script_lang_js_isSlot(children) ? children : {
-        default: function _default() {
-          return [children];
-        }
-      });
+      }, [children]);
     }
   },
   render: function render() {
@@ -8449,7 +8420,7 @@ function setupResizeAndScrollEventListeners($el, listener) {
     });
   };
 }
-;// CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/cli-service/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/Tip.vue?vue&type=script&lang=js
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/Tip.vue?vue&type=script&lang=js
 
 
 /* harmony default export */ var Tipvue_type_script_lang_js = ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineComponent)({
@@ -8487,7 +8458,7 @@ function setupResizeAndScrollEventListeners($el, listener) {
 const Tip_exports_ = Tipvue_type_script_lang_js;
 
 /* harmony default export */ var Tip = (Tip_exports_);
-;// CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/cli-service/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/Option.vue?vue&type=script&lang=js
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/Option.vue?vue&type=script&lang=js
 
 
 
@@ -8497,7 +8468,7 @@ const Tip_exports_ = Tipvue_type_script_lang_js;
 
 
 
-function Optionvue_type_script_lang_js_isSlot(s) {
+function _isSlot(s) {
   return typeof s === 'function' || Object.prototype.toString.call(s) === '[object Object]' && !(0,external_commonjs_vue_commonjs2_vue_root_Vue_.isVNode)(s);
 }
 
@@ -8556,8 +8527,6 @@ var Option = {
       if (instance.shouldFlattenOptions && this.shouldShow) return null;
 
       if (node.isBranch) {
-        var _slot;
-
         var arrowClass = {
           'vue-treeselect__option-arrow': true,
           'vue-treeselect__option-arrow--rotated': this.shouldExpand
@@ -8568,11 +8537,11 @@ var Option = {
         }, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)((0,external_commonjs_vue_commonjs2_vue_root_Vue_.resolveComponent)("transition"), {
           "name": "vue-treeselect__option-arrow--prepare",
           "appear": true
-        }, Optionvue_type_script_lang_js_isSlot(_slot = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)(Arrow, {
-          "class": arrowClass
-        }, null)) ? _slot : {
+        }, {
           default: function _default() {
-            return [_slot];
+            return [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)(Arrow, {
+              "class": arrowClass
+            }, null)];
           }
         })]);
       } // For leaf nodes, we render a placeholder to keep its label aligned to
@@ -8596,11 +8565,7 @@ var Option = {
       return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)("div", {
         "class": "vue-treeselect__label-container",
         "onMousedown": this.handleMouseDownOnLabelContainer
-      }, Optionvue_type_script_lang_js_isSlot(children) ? children : {
-        default: function _default() {
-          return [children];
-        }
-      });
+      }, [children]);
     },
     renderCheckboxContainer: function renderCheckboxContainer(children) {
       var h = this.$createElement;
@@ -8610,11 +8575,7 @@ var Option = {
       if (instance.disableBranchNodes && node.isBranch) return null;
       return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)("div", {
         "class": "vue-treeselect__checkbox-container"
-      }, Optionvue_type_script_lang_js_isSlot(children) ? children : {
-        default: function _default() {
-          return [children];
-        }
-      });
+      }, [children]);
     },
     renderCheckbox: function renderCheckbox() {
       var h = this.$createElement;
@@ -8749,7 +8710,7 @@ var Option = {
     })
   },
   render: function render() {
-    var _slot2;
+    var _slot;
 
     var h = arguments[0];
     var node = this.node;
@@ -8763,9 +8724,9 @@ var Option = {
       "class": listItemClass
     }, [this.renderOption(), node.isBranch ? (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)((0,external_commonjs_vue_commonjs2_vue_root_Vue_.resolveComponent)("transition"), {
       "name": "vue-treeselect__list--transition"
-    }, Optionvue_type_script_lang_js_isSlot(_slot2 = this.renderSubOptionsList()) ? _slot2 : {
+    }, _isSlot(_slot = this.renderSubOptionsList()) ? _slot : {
       default: function _default() {
-        return [_slot2];
+        return [_slot];
       }
     }) : '']);
   }
@@ -8779,7 +8740,7 @@ var Option = {
 const Option_exports_ = Optionvue_type_script_lang_js;
 
 /* harmony default export */ var components_Option = (Option_exports_);
-;// CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/cli-service/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/Menu.vue?vue&type=script&lang=js
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/Menu.vue?vue&type=script&lang=js
 
 
 
@@ -9085,7 +9046,7 @@ var directionMap = {
 const Menu_exports_ = Menuvue_type_script_lang_js;
 
 /* harmony default export */ var Menu = (Menu_exports_);
-;// CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/cli-service/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/MenuPortal.vue?vue&type=script&lang=js
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/MenuPortal.vue?vue&type=script&lang=js
 
 
 
@@ -9251,7 +9212,7 @@ var placeholder;
 const MenuPortal_exports_ = MenuPortalvue_type_script_lang_js;
 
 /* harmony default export */ var MenuPortal = (MenuPortal_exports_);
-;// CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/cli-service/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/Treeselect.vue?vue&type=script&lang=js
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/Treeselect.vue?vue&type=script&lang=js
 
 
 
