@@ -55,8 +55,11 @@
     },
 
     methods: {
+
       renderX() {
         const { instance } = this
+        console.log("this", this);
+        window.sadfasdf = this;
         const title = instance.multiple ? instance.clearAllText : instance.clearValueText
 
         if (!this.shouldShowX) return null
