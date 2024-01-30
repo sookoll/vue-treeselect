@@ -134,6 +134,7 @@
 
   export default {
     name: 'vue-treeselect--menu-portal',
+    inject: [ 'instance' ],
 
     created() {
       this.portalTarget = null
