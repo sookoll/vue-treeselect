@@ -8,6 +8,7 @@
             noResultsText="No results..."
             placeholder="Select items..."
             v-model="selected"
+            :appendToBody="false"
             :default-expand-level="0"
             :autoSelectDescendants="true"
             :autoDeselectDescendants="true"
