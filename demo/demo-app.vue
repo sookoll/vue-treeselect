@@ -1,6 +1,4 @@
 <template>
-    
-
     <div>
         <vue-treeselect
             :multiple="true"
@@ -8,7 +6,7 @@
             noResultsText="No results..."
             placeholder="Select items..."
             v-model="selected"
-            :appendToBody="false"
+            :appendToBody="true"
             :default-expand-level="0"
             :autoSelectDescendants="true"
             :autoDeselectDescendants="true"
@@ -16,7 +14,6 @@
             :searchable="false"
             :show-count="true"
         >
-        
         </vue-treeselect>
         <div>
             Selected: {{selected}}
