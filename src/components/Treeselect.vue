@@ -2,8 +2,9 @@
   <div ref="wrapper" :class=wrapperClass>
     <HiddenFields />
     <Control ref="control" />
-    <MenuPortal v-if="appendToBody" ref="portal" />
-    <Menu v-else ref="menu" />
+    <Teleport :disabled="!appendToBody" to="body">
+      <Menu  ref="menu" />
+    </Teleport>
   </div>
 </template>
 
