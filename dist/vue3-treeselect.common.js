@@ -1075,14 +1075,12 @@ if (typeof window !== 'undefined') {
 
 ;// CONCATENATED MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject = require("vue");
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[4]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/Treeselect.vue?vue&type=template&id=4fa337e8
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[4]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/Treeselect.vue?vue&type=template&id=e2b9be48
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_HiddenFields = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.resolveComponent)("HiddenFields");
 
   var _component_Control = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.resolveComponent)("Control");
-
-  var _component_MenuPortal = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.resolveComponent)("MenuPortal");
 
   var _component_Menu = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.resolveComponent)("Menu");
 
@@ -1091,13 +1089,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.normalizeClass)(_ctx.wrapperClass)
   }, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createVNode)(_component_HiddenFields), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createVNode)(_component_Control, {
     ref: "control"
-  }, null, 512), _ctx.appendToBody ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createBlock)(_component_MenuPortal, {
-    key: 0,
-    ref: "portal"
-  }, null, 512)) : ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createBlock)(_component_Menu, {
-    key: 1,
+  }, null, 512), ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.Teleport, {
+    disabled: !_ctx.appendToBody,
+    to: "body"
+  }, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createVNode)(_component_Menu, {
     ref: "menu"
-  }, null, 512))], 2);
+  }, null, 512)], 8, ["disabled"]))], 2);
 }
 // EXTERNAL MODULE: ./node_modules/fuzzysearch/index.js
 var fuzzysearch = __webpack_require__(390);
@@ -2622,8 +2619,7 @@ var instanceId = 0;
       return this.$refs.control.$el;
     },
     getMenu: function getMenu() {
-      var ref = this.appendToBody ? this.$refs.portal.portalTarget : this;
-      var $menu = ref.$refs.menu.$refs.menu;
+      var $menu = this.$refs.menu.$refs.menu;
       return $menu && $menu.nodeName !== '#comment' ? $menu : null;
     },
     setCurrentHighlightedOption: function setCurrentHighlightedOption(node) {
@@ -4723,6 +4719,7 @@ function MenuPortalvue_type_script_lang_js_defineProperty(obj, key, value) { if 
 
 
 
+
 var PortalTarget = {
   name: 'vue-treeselect--portal-target',
   inject: ['instance'],
@@ -4837,6 +4834,7 @@ var PortalTarget = {
 var placeholder;
 /* harmony default export */ var MenuPortalvue_type_script_lang_js = ({
   name: 'vue-treeselect--menu-portal',
+  inject: ['instance'],
   created: function created() {
     this.portalTarget = null;
   },
@@ -4853,21 +4851,21 @@ var placeholder;
       this.portalTarget = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createApp)(MenuPortalvue_type_script_lang_js_objectSpread({
         parent: this
       }, PortalTarget));
-      this.portalTarget.mount(el); // this.portalTarget = new Vue({
-      //   el,
-      //   parent: this,
-      //   ...PortalTarget,
-      // })
+      this.portalTarget.provide('instance', this.instance);
+      this.portalTarget.mount(el);
     },
     teardown: function teardown() {
-      document.body.removeChild(this.portalTarget.$el);
-      this.portalTarget.$el.innerHTML = '';
-      this.portalTarget.$destroy();
-      this.portalTarget = null;
+      /*
+      document.body.removeChild(this.portalTarget.$el)
+      this.portalTarget.$el.innerHTML = ''
+       this.portalTarget.$destroy()
+      this.portalTarget = null
+      */
     }
   },
   render: function render() {
     if (!placeholder) placeholder = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createVNode)("div", {
+      "ref": "menu",
       "class": "vue-treeselect__menu-placeholder"
     }, null);
     return placeholder;
