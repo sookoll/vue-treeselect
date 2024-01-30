@@ -1,7 +1,8 @@
 <script>
-  import {createApp} from 'vue'
+  import {createApp, inject} from 'vue'
   import { watchSize, setupResizeAndScrollEventListeners, find } from '../utils'
   import Menu from './Menu'
+  import treeselectMixin from '../mixins/treeselectMixin'
 
   const PortalTarget = {
     name: 'vue-treeselect--portal-target',
@@ -153,30 +154,28 @@
         const el = document.createElement('div')
         document.body.appendChild(el)
         this.portalTarget = createApp({
-          
           parent: this,
           ...PortalTarget,
         });
+        this.portalTarget.provide('instance', this.instance);
+
         this.portalTarget.mount(el)
-        // this.portalTarget = new Vue({
-        //   el,
-        //   parent: this,
-        //   ...PortalTarget,
-        // })
       },
 
       teardown() {
+        /*
         document.body.removeChild(this.portalTarget.$el)
         this.portalTarget.$el.innerHTML = ''
 
         this.portalTarget.$destroy()
         this.portalTarget = null
+        */
       },
     },
 
     render() {
       if (!placeholder) placeholder = (
-        <div class="vue-treeselect__menu-placeholder" />
+        <div ref="menu" class="vue-treeselect__menu-placeholder" />
       )
 
       return placeholder
