@@ -4774,20 +4774,14 @@ var directionMap = {
     updateMenuContainerOffset: function updateMenuContainerOffset() {
       var instance = this.instance;
       var $control = instance.getControl();
-      var $portalTarget = this.$el;
-      var $menu = this.$refs.menu;
 
-      if ($menu && $control && $portalTarget) {
+      if ($control) {
         var controlRect = $control.getBoundingClientRect();
-        var menuRect = $menu.getBoundingClientRect(); //console.log("menuRect", menuRect)
-
-        var offsetY = instance.menu.placement === 'bottom' ? controlRect.height : 0;
         var left = Math.round(controlRect.left) + 'px';
-        var top = Math.round(menuRect.height + offsetY + 10) + 'px';
-        var menuContainerStyle = this.$refs['menu-container'].style;
-        console.log("top", top);
-        menuContainerStyle.transform = "translate(".concat(left, ", ").concat(top, ")");
-        console.log("transform", menuContainerStyle.transform, "translate(".concat(left, ", ").concat(top, ")"));
+        var top = Math.round(controlRect.bottom) + 'px';
+        var menuContainerStyle = this.$refs['menu-container'].style; //console.log("top", top );
+
+        menuContainerStyle.transform = "translate(".concat(left, ", ").concat(top, ")"); //console.log("transform", menuContainerStyle.transform, `translate(${left}, ${top})`)
       }
     }
   },
@@ -4885,10 +4879,10 @@ var PortalTarget = {
       var $control = instance.getControl();
       var $portalTarget = this.$el;
       var controlRect = $control.getBoundingClientRect();
-      var portalTargetRect = $portalTarget.getBoundingClientRect();
-      var offsetY = instance.menu.placement === 'bottom' ? controlRect.height : 0;
-      var left = Math.round(controlRect.left - portalTargetRect.left) + 'px';
-      var top = Math.round(controlRect.top - portalTargetRect.top + offsetY) + 'px';
+      var portalTargetRect = $portalTarget.getBoundingClientRect(); //const offsetY = instance.menu.placement === 'bottom' ? controlRect.height : 0
+
+      var left = Math.round(controlRect.left) + 'px';
+      var top = Math.round(controlRect.bottom) + 'px';
       var menuContainerStyle = this.$refs.menu.$refs['menu-container'].style;
       var transformVariations = ['transform', 'webkitTransform', 'MozTransform', 'msTransform'];
       var transform = find(transformVariations, function (t) {

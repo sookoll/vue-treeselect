@@ -397,23 +397,17 @@
       updateMenuContainerOffset() {
         const { instance } = this
         const $control = instance.getControl()
-        const $portalTarget = this.$el
-        const $menu = this.$refs.menu;
 
-        if ($menu && $control && $portalTarget) {
+        if ($control) {
           const controlRect = $control.getBoundingClientRect()
 
-          const menuRect = $menu.getBoundingClientRect();
-          //console.log("menuRect", menuRect)
-
-          const offsetY = instance.menu.placement === 'bottom' ? controlRect.height : 0
-          const left = Math.round(controlRect.left ) + 'px'
-          const top = Math.round(menuRect.height + offsetY + 10) + 'px'
+          const left = Math.round(controlRect.left) + 'px'
+          const top = Math.round(controlRect.bottom) + 'px'
           const menuContainerStyle = this.$refs['menu-container'].style
-          console.log("top", top );
+          //console.log("top", top );
 
           menuContainerStyle.transform = `translate(${left}, ${top})`
-          console.log("transform", menuContainerStyle.transform, `translate(${left}, ${top})`)
+          //console.log("transform", menuContainerStyle.transform, `translate(${left}, ${top})`)
         }
       },
 

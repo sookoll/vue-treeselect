@@ -83,9 +83,9 @@
         const $portalTarget = this.$el
         const controlRect = $control.getBoundingClientRect()
         const portalTargetRect = $portalTarget.getBoundingClientRect()
-        const offsetY = instance.menu.placement === 'bottom' ? controlRect.height : 0
-        const left = Math.round(controlRect.left - portalTargetRect.left) + 'px'
-        const top = Math.round(controlRect.top - portalTargetRect.top + offsetY) + 'px'
+        //const offsetY = instance.menu.placement === 'bottom' ? controlRect.height : 0
+        const left = Math.round(controlRect.left ) + 'px'
+        const top = Math.round(controlRect.bottom) + 'px'
         const menuContainerStyle = this.$refs.menu.$refs['menu-container'].style
         const transformVariations = [ 'transform', 'webkitTransform', 'MozTransform', 'msTransform' ]
         const transform = find(transformVariations, t => t in document.body.style)
