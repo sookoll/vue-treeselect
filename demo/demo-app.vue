@@ -31,6 +31,7 @@
             noResultsText="No results..."
             placeholder="Select items..."
             v-model="selected2"
+
             :appendToBody="true"
             :default-expand-level="0"
             :autoSelectDescendants="true"
@@ -38,9 +39,35 @@
             :flat="true"
             :searchable="false"
             :show-count="true"
+        :open-on-click="true"
+        :open-on-focus="true"
+        :clear-on-select="true"
+        :isDefaultExpanded="true"
+        :always-open="true"
+        :disableFuzzyMatching="true"
+        :defaultExpandLevel="999"
+        class="tree-select"
+        :close-on-select="false"
+        :maxHeight="250"
+        open-direction="auto"
         >
         </vue-treeselect>
         </div>
+
+        <p>lorem ipsum dolor sit amet</p>
+        <p>lorem ipsum dolor sit amet</p>
+        <p>lorem ipsum dolor sit amet</p>
+        <p>lorem ipsum dolor sit amet</p>
+        <p>lorem ipsum dolor sit amet</p>
+        <p>lorem ipsum dolor sit amet</p>
+        <p>lorem ipsum dolor sit amet</p>
+        <p>lorem ipsum dolor sit amet</p>
+        <p>lorem ipsum dolor sit amet</p>
+        <p>lorem ipsum dolor sit amet</p>
+        <p>lorem ipsum dolor sit amet</p>
+        <p>lorem ipsum dolor sit amet</p>
+        <p>lorem ipsum dolor sit amet</p>
+        <p>lorem ipsum dolor sit amet</p>
     </div>
 </template>
 <script>
@@ -72,7 +99,15 @@ export default defineComponent({
                             expand: false, 
                             children: [
                                 { label: 'subchild 11', id: 7 },
-                                { label: 'subchild 22', id: 8 },
+                                { label: 'subchild 11', id: 8 },
+                                { label: 'subchild 11', id: 9 },
+                                { label: 'subchild 11', id: 10 },
+                                { label: 'subchild 11', id: 11 },
+                                { label: 'subchild 11', id: 12 },
+                                { label: 'subchild 11', id: 13 },
+                                { label: 'subchild 11', id: 14 },
+                                { label: 'subchild 11', id: 15 },
+                                { label: 'subchild 22', id: 16 },
                             ]
                         },
                     ]

@@ -377,23 +377,32 @@
         const $control = instance.getControl()
         const controlRect = $control.getBoundingClientRect()
 
-        $portalTarget.style.width = controlRect.width + 'px'
+        if ($portalTarget) {
+          $portalTarget.style.width = controlRect.width + 'px'
+        }
       },
 
       updateMenuContainerOffset() {
         const { instance } = this
         const $control = instance.getControl()
         const $portalTarget = this.$el
+        const $menu = this.$refs.menu;
 
-        const controlRect = $control.getBoundingClientRect()
-        const portalTargetRect = $portalTarget.getBoundingClientRect()
-        const offsetY = instance.menu.placement === 'bottom' ? controlRect.height : 0
-        const left = Math.round(controlRect.left ) + 'px'
-        const top = Math.round(controlRect.top - portalTargetRect.top + offsetY) + 'px'
-        const menuContainerStyle = this.$refs['menu-container'].style
+        if ($menu && $control && $portalTarget) {
+          const controlRect = $control.getBoundingClientRect()
 
-        menuContainerStyle.transform = `translate(${left}, ${top})`
-        console.log("adding transform", menuContainerStyle.transform, `translate(${left}, ${top})`)
+          const menuRect = $menu.getBoundingClientRect();
+          //console.log("menuRect", menuRect)
+
+          const offsetY = instance.menu.placement === 'bottom' ? controlRect.height : 0
+          const left = Math.round(controlRect.left ) + 'px'
+          const top = Math.round(menuRect.height + offsetY + 10) + 'px'
+          const menuContainerStyle = this.$refs['menu-container'].style
+          //console.log("top", top );
+
+          menuContainerStyle.transform = `translate(${left}, ${top})`
+          //console.log("transform", menuContainerStyle.transform, `translate(${left}, ${top})`)
+        }
       },
 
 
@@ -401,7 +410,7 @@
 
     render() {
       return (
-        <div ref="menu-container" class="vue-treeselect__menu-container" style={this.menuContainerStyle}>
+        <div ref="menu-container" class="vue-treeselect__menu-container vue-treeselect__portal-target" style={this.menuContainerStyle}>
           <div name="vue-treeselect__menu--transition">
             {this.renderMenu()}
           </div>

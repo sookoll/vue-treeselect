@@ -2637,7 +2637,9 @@ var instanceId = 0;
       return this.$refs.control.$el;
     },
     getMenu: function getMenu() {
-      var $menu = this.$refs.menu.$refs.menu;
+      var _this$$refs$menu, _this$$refs$menu$$ref;
+
+      var $menu = (_this$$refs$menu = this.$refs.menu) === null || _this$$refs$menu === void 0 ? void 0 : (_this$$refs$menu$$ref = _this$$refs$menu.$refs) === null || _this$$refs$menu$$ref === void 0 ? void 0 : _this$$refs$menu$$ref.menu;
       return $menu && $menu.nodeName !== '#comment' ? $menu : null;
     },
     setCurrentHighlightedOption: function setCurrentHighlightedOption(node) {
@@ -4772,26 +4774,34 @@ var directionMap = {
       var $portalTarget = this.$el;
       var $control = instance.getControl();
       var controlRect = $control.getBoundingClientRect();
-      $portalTarget.style.width = controlRect.width + 'px';
+
+      if ($portalTarget) {
+        $portalTarget.style.width = controlRect.width + 'px';
+      }
     },
     updateMenuContainerOffset: function updateMenuContainerOffset() {
       var instance = this.instance;
       var $control = instance.getControl();
       var $portalTarget = this.$el;
-      var controlRect = $control.getBoundingClientRect();
-      var portalTargetRect = $portalTarget.getBoundingClientRect();
-      var offsetY = instance.menu.placement === 'bottom' ? controlRect.height : 0;
-      var left = Math.round(controlRect.left) + 'px';
-      var top = Math.round(controlRect.top - portalTargetRect.top + offsetY) + 'px';
-      var menuContainerStyle = this.$refs['menu-container'].style;
-      menuContainerStyle.transform = "translate(".concat(left, ", ").concat(top, ")");
-      console.log("adding transform", menuContainerStyle.transform, "translate(".concat(left, ", ").concat(top, ")"));
+      var $menu = this.$refs.menu;
+
+      if ($menu && $control && $portalTarget) {
+        var controlRect = $control.getBoundingClientRect();
+        var menuRect = $menu.getBoundingClientRect(); //console.log("menuRect", menuRect)
+
+        var offsetY = instance.menu.placement === 'bottom' ? controlRect.height : 0;
+        var left = Math.round(controlRect.left) + 'px';
+        var top = Math.round(menuRect.height + offsetY + 10) + 'px';
+        var menuContainerStyle = this.$refs['menu-container'].style; //console.log("top", top );
+
+        menuContainerStyle.transform = "translate(".concat(left, ", ").concat(top, ")"); //console.log("transform", menuContainerStyle.transform, `translate(${left}, ${top})`)
+      }
     }
   },
   render: function render() {
     return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)("div", {
       "ref": "menu-container",
-      "class": "vue-treeselect__menu-container",
+      "class": "vue-treeselect__menu-container vue-treeselect__portal-target",
       "style": this.menuContainerStyle
     }, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)("div", {
       "name": "vue-treeselect__menu--transition"

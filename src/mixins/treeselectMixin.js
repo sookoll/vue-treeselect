@@ -1371,7 +1371,7 @@ export default {
     },
 
     getMenu() {
-      const $menu = this.$refs.menu.$refs.menu
+      const $menu = this.$refs.menu?.$refs?.menu
       return $menu && $menu.nodeName !== '#comment' ? $menu : null
     },
 
