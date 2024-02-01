@@ -4451,6 +4451,13 @@ var directionMap = {
     };
   },
   computed: {
+    classes: function classes() {
+      var classes = {
+        'vue-treeselect__menu-container': true
+      };
+      if (this.instance.appendToBody) classes["vue-treeselect__portal-target"] = true;
+      return classes;
+    },
     menuStyle: function menuStyle() {
       var instance = this.instance;
       return {
@@ -4490,7 +4497,7 @@ var directionMap = {
   },
   unmounted: function unmounted() {
     this.onMenuClose();
-    if (this.appendToBody) this.removeHandlers();
+    if (this.instance.appendToBody) this.removeHandlers();
   },
   methods: {
     renderMenu: function renderMenu() {
@@ -4777,16 +4784,17 @@ var directionMap = {
         var offsetY = instance.menu.placement === 'bottom' ? controlRect.height : 0;
         var left = Math.round(controlRect.left) + 'px';
         var top = Math.round(menuRect.height + offsetY + 10) + 'px';
-        var menuContainerStyle = this.$refs['menu-container'].style; //console.log("top", top );
-
-        menuContainerStyle.transform = "translate(".concat(left, ", ").concat(top, ")"); //console.log("transform", menuContainerStyle.transform, `translate(${left}, ${top})`)
+        var menuContainerStyle = this.$refs['menu-container'].style;
+        console.log("top", top);
+        menuContainerStyle.transform = "translate(".concat(left, ", ").concat(top, ")");
+        console.log("transform", menuContainerStyle.transform, "translate(".concat(left, ", ").concat(top, ")"));
       }
     }
   },
   render: function render() {
     return (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createVNode)("div", {
       "ref": "menu-container",
-      "class": "vue-treeselect__menu-container vue-treeselect__portal-target",
+      "class": this.classes,
       "style": this.menuContainerStyle
     }, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createVNode)("div", {
       "name": "vue-treeselect__menu--transition"

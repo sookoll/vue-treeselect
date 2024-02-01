@@ -25,6 +25,17 @@
     },
 
     computed: {
+      classes() {
+        let classes = {
+          'vue-treeselect__menu-container': true,
+        };
+
+        if (this.instance.appendToBody) 
+          classes["vue-treeselect__portal-target"] = true;
+
+        return classes;
+      },
+
       menuStyle() {
         const { instance } = this
 
@@ -75,7 +86,7 @@
     unmounted() {
       this.onMenuClose()
 
-      if (this.appendToBody) this.removeHandlers();
+      if (this.instance.appendToBody) this.removeHandlers();
     },
 
     methods: {
@@ -399,10 +410,10 @@
           const left = Math.round(controlRect.left ) + 'px'
           const top = Math.round(menuRect.height + offsetY + 10) + 'px'
           const menuContainerStyle = this.$refs['menu-container'].style
-          //console.log("top", top );
+          console.log("top", top );
 
           menuContainerStyle.transform = `translate(${left}, ${top})`
-          //console.log("transform", menuContainerStyle.transform, `translate(${left}, ${top})`)
+          console.log("transform", menuContainerStyle.transform, `translate(${left}, ${top})`)
         }
       },
 
@@ -410,8 +421,9 @@
     },
 
     render() {
+
       return (
-        <div ref="menu-container" class="vue-treeselect__menu-container vue-treeselect__portal-target" style={this.menuContainerStyle}>
+        <div ref="menu-container" class={this.classes} style={this.menuContainerStyle}>
           <div name="vue-treeselect__menu--transition">
             {this.renderMenu()}
           </div>
