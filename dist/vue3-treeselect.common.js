@@ -4438,6 +4438,14 @@ var directionMap = {
 /* harmony default export */ var Menuvue_type_script_lang_js = ({
   name: 'vue-treeselect--menu',
   inject: ['instance'],
+  data: function data() {
+    return {
+      controlResizeAndScrollEventListeners: null,
+      controlSizeWatcher: null,
+      menuSizeWatcher: null,
+      menuResizeAndScrollEventListeners: null
+    };
+  },
   computed: {
     menuStyle: function menuStyle() {
       var instance = this.instance;
@@ -4453,25 +4461,32 @@ var directionMap = {
     }
   },
   watch: {
-    'instance.menu.isOpen': function instanceMenuIsOpen(newValue) {
-      if (newValue) {
-        // In case `openMenu()` is just called and the menu is not rendered yet.
-        this.$nextTick(this.onMenuOpen);
-      } else {
-        this.onMenuClose();
-      }
+    'instance.menu.placement': function instanceMenuPlacement() {
+      this.updateMenuContainerOffset();
+    },
+    'instance.menu.isOpen': {
+      handler: function handler(newValue) {
+        if (newValue) {
+          // In case `openMenu()` is just called and the menu is not rendered yet.
+          this.$nextTick(this.onMenuOpen);
+          if (this.instance.appendToBody) this.setupHandlers();
+        } else {
+          this.onMenuClose();
+          if (this.instance.appendToBody) this.removeHandlers();
+        }
+      },
+      immediate: true
     }
   },
   created: function created() {
     this.menuSizeWatcher = null;
     this.menuResizeAndScrollEventListeners = null;
   },
-  mounted: function mounted() {
-    var instance = this.instance;
-    if (instance.menu.isOpen) this.$nextTick(this.onMenuOpen);
+  mounted: function mounted() {// 
   },
   unmounted: function unmounted() {
     this.onMenuClose();
+    if (this.appendToBody) this.removeHandlers();
   },
   methods: {
     renderMenu: function renderMenu() {
@@ -4688,6 +4703,71 @@ var directionMap = {
       if (!this.menuResizeAndScrollEventListeners) return;
       this.menuResizeAndScrollEventListeners.remove();
       this.menuResizeAndScrollEventListeners = null;
+    },
+    // These functions are for appendToBody mode.
+    setupHandlers: function setupHandlers() {
+      this.updateWidth();
+      this.updateMenuContainerOffset();
+      this.setupControlResizeAndScrollEventListeners();
+      this.setupControlSizeWatcher();
+    },
+    removeHandlers: function removeHandlers() {
+      this.removeControlResizeAndScrollEventListeners();
+      this.removeControlSizeWatcher();
+    },
+    setupControlResizeAndScrollEventListeners: function setupControlResizeAndScrollEventListeners() {
+      var instance = this.instance;
+      var $control = instance.getControl(); // istanbul ignore next
+
+      if (this.controlResizeAndScrollEventListeners) return;
+      this.controlResizeAndScrollEventListeners = {
+        remove: setupResizeAndScrollEventListeners($control, this.updateMenuContainerOffset)
+      };
+    },
+    setupControlSizeWatcher: function setupControlSizeWatcher() {
+      var _this = this;
+
+      var instance = this.instance;
+      var $control = instance.getControl(); // istanbul ignore next
+
+      if (this.controlSizeWatcher) return;
+      this.controlSizeWatcher = {
+        remove: watchSize($control, function () {
+          _this.updateWidth();
+
+          _this.updateMenuContainerOffset();
+        })
+      };
+    },
+    removeControlResizeAndScrollEventListeners: function removeControlResizeAndScrollEventListeners() {
+      if (!this.controlResizeAndScrollEventListeners) return;
+      this.controlResizeAndScrollEventListeners.remove();
+      this.controlResizeAndScrollEventListeners = null;
+    },
+    removeControlSizeWatcher: function removeControlSizeWatcher() {
+      if (!this.controlSizeWatcher) return;
+      this.controlSizeWatcher.remove();
+      this.controlSizeWatcher = null;
+    },
+    updateWidth: function updateWidth() {
+      var instance = this.instance;
+      var $portalTarget = this.$el;
+      var $control = instance.getControl();
+      var controlRect = $control.getBoundingClientRect();
+      $portalTarget.style.width = controlRect.width + 'px';
+    },
+    updateMenuContainerOffset: function updateMenuContainerOffset() {
+      var instance = this.instance;
+      var $control = instance.getControl();
+      var $portalTarget = this.$el;
+      var controlRect = $control.getBoundingClientRect();
+      var portalTargetRect = $portalTarget.getBoundingClientRect();
+      var offsetY = instance.menu.placement === 'bottom' ? controlRect.height : 0;
+      var left = Math.round(controlRect.left) + 'px';
+      var top = Math.round(controlRect.top - portalTargetRect.top + offsetY) + 'px';
+      var menuContainerStyle = this.$refs['menu-container'].style;
+      menuContainerStyle.transform = "translate(".concat(left, ", ").concat(top, ")");
+      console.log("adding transform", menuContainerStyle.transform, "translate(".concat(left, ", ").concat(top, ")"));
     }
   },
   render: function render() {
@@ -4723,25 +4803,9 @@ function MenuPortalvue_type_script_lang_js_defineProperty(obj, key, value) { if 
 var PortalTarget = {
   name: 'vue-treeselect--portal-target',
   inject: ['instance'],
-  watch: {
-    'instance.menu.isOpen': function instanceMenuIsOpen(newValue) {
-      if (newValue) {
-        this.setupHandlers();
-      } else {
-        this.removeHandlers();
-      }
-    },
-    'instance.menu.placement': function instanceMenuPlacement() {
-      this.updateMenuContainerOffset();
-    }
-  },
   created: function created() {
     this.controlResizeAndScrollEventListeners = null;
     this.controlSizeWatcher = null;
-  },
-  mounted: function mounted() {
-    var instance = this.instance;
-    if (instance.menu.isOpen) this.setupHandlers();
   },
   methods: {
     setupHandlers: function setupHandlers() {
