@@ -8,30 +8,11 @@
     name: 'vue-treeselect--portal-target',
     inject: [ 'instance' ],
 
-    watch: {
-      'instance.menu.isOpen'(newValue) {
-        if (newValue) {
-          this.setupHandlers()
-        } else {
-          this.removeHandlers()
-        }
-      },
-
-      'instance.menu.placement'() {
-        this.updateMenuContainerOffset()
-      },
-    },
-
     created() {
       this.controlResizeAndScrollEventListeners = null
       this.controlSizeWatcher = null
     },
 
-    mounted() {
-      const { instance } = this
-
-      if (instance.menu.isOpen) this.setupHandlers()
-    },
 
     methods: {
       setupHandlers() {

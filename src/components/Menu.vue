@@ -15,6 +15,15 @@
     name: 'vue-treeselect--menu',
     inject: [ 'instance' ],
 
+    data() {
+      return {
+        controlResizeAndScrollEventListeners: null,
+        controlSizeWatcher : null,
+        menuSizeWatcher: null,
+        menuResizeAndScrollEventListeners: null,
+      }
+    },
+
     computed: {
       menuStyle() {
         const { instance } = this
@@ -34,14 +43,24 @@
     },
 
     watch: {
-      'instance.menu.isOpen'(newValue) {
-        if (newValue) {
-          // In case `openMenu()` is just called and the menu is not rendered yet.
-          this.$nextTick(this.onMenuOpen)
-        } else {
-          this.onMenuClose()
-        }
+
+      'instance.menu.placement'() {
+        this.updateMenuContainerOffset()
       },
+
+      'instance.menu.isOpen': {
+        handler(newValue) {
+          if (newValue) {
+            // In case `openMenu()` is just called and the menu is not rendered yet.
+            this.$nextTick(this.onMenuOpen)
+            if (this.instance.appendToBody) this.setupHandlers()
+          } else {
+            this.onMenuClose()
+            if (this.instance.appendToBody) this.removeHandlers()
+          }
+        },
+        immediate: true
+      }
     },
 
     created() {
@@ -50,13 +69,13 @@
     },
 
     mounted() {
-      const { instance } = this
-
-      if (instance.menu.isOpen) this.$nextTick(this.onMenuOpen)
+      // 
     },
 
     unmounted() {
       this.onMenuClose()
+
+      if (this.appendToBody) this.removeHandlers();
     },
 
     methods: {
@@ -297,6 +316,87 @@
         this.menuResizeAndScrollEventListeners.remove()
         this.menuResizeAndScrollEventListeners = null
       },
+
+      // These functions are for appendToBody mode.
+      setupHandlers() {
+        this.updateWidth()
+        this.updateMenuContainerOffset()
+        this.setupControlResizeAndScrollEventListeners()
+        this.setupControlSizeWatcher()
+      },
+
+      removeHandlers() {
+        this.removeControlResizeAndScrollEventListeners()
+        this.removeControlSizeWatcher()
+      },
+
+      setupControlResizeAndScrollEventListeners() {
+        const { instance } = this
+        const $control = instance.getControl()
+
+        // istanbul ignore next
+        if (this.controlResizeAndScrollEventListeners) return
+
+        this.controlResizeAndScrollEventListeners = {
+          remove: setupResizeAndScrollEventListeners($control, this.updateMenuContainerOffset),
+        }
+      },
+
+      setupControlSizeWatcher() {
+        const { instance } = this
+        const $control = instance.getControl()
+
+        // istanbul ignore next
+        if (this.controlSizeWatcher) return
+
+        this.controlSizeWatcher = {
+          remove: watchSize($control, () => {
+            this.updateWidth()
+            this.updateMenuContainerOffset()
+          }),
+        }
+      },
+
+      removeControlResizeAndScrollEventListeners() {
+        if (!this.controlResizeAndScrollEventListeners) return
+
+        this.controlResizeAndScrollEventListeners.remove()
+        this.controlResizeAndScrollEventListeners = null
+      },
+
+      removeControlSizeWatcher() {
+        if (!this.controlSizeWatcher) return
+
+        this.controlSizeWatcher.remove()
+        this.controlSizeWatcher = null
+      },
+
+      updateWidth() {
+        const { instance } = this
+        const $portalTarget = this.$el
+        const $control = instance.getControl()
+        const controlRect = $control.getBoundingClientRect()
+
+        $portalTarget.style.width = controlRect.width + 'px'
+      },
+
+      updateMenuContainerOffset() {
+        const { instance } = this
+        const $control = instance.getControl()
+        const $portalTarget = this.$el
+
+        const controlRect = $control.getBoundingClientRect()
+        const portalTargetRect = $portalTarget.getBoundingClientRect()
+        const offsetY = instance.menu.placement === 'bottom' ? controlRect.height : 0
+        const left = Math.round(controlRect.left ) + 'px'
+        const top = Math.round(controlRect.top - portalTargetRect.top + offsetY) + 'px'
+        const menuContainerStyle = this.$refs['menu-container'].style
+
+        menuContainerStyle.transform = `translate(${left}, ${top})`
+        console.log("adding transform", menuContainerStyle.transform, `translate(${left}, ${top})`)
+      },
+
+
     },
 
     render() {

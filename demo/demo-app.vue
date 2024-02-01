@@ -1,11 +1,36 @@
 <template>
     <div>
+        <div style="margin-top: 100px; margin-left: 100px; max-width: 300px;">
         <vue-treeselect
             :multiple="true"
             :options="[treeData]"
             noResultsText="No results..."
             placeholder="Select items..."
             v-model="selected"
+            :appendToBody="false"
+            :default-expand-level="0"
+            :autoSelectDescendants="true"
+            :autoDeselectDescendants="true"
+            :flat="true"
+            :searchable="false"
+            :show-count="true"
+        >
+        </vue-treeselect>
+        </div>
+        <div>
+            Selected: {{selected}}
+        </div>
+
+        Append to body:
+
+        <div style="margin-top: 100px; margin-left: 100px; max-width:300px;">
+        <vue-treeselect
+            :multiple="true"
+            :options="[treeData]"
+            placement="top"
+            noResultsText="No results..."
+            placeholder="Select items..."
+            v-model="selected2"
             :appendToBody="true"
             :default-expand-level="0"
             :autoSelectDescendants="true"
@@ -15,8 +40,6 @@
             :show-count="true"
         >
         </vue-treeselect>
-        <div>
-            Selected: {{selected}}
         </div>
     </div>
 </template>
@@ -28,6 +51,7 @@ export default defineComponent({
     setup() {
 
         let selected = ref([]);
+        let selected2 = ref([]);
         let treeOrientation = ref("0");
         let treeData = reactive({
             label: 'root',
@@ -59,7 +83,8 @@ export default defineComponent({
 
         return {
             treeData,
-            selected
+            selected,
+            selected2
         }
     }
 })
