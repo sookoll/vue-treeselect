@@ -2634,7 +2634,9 @@ var instanceId = 0;
       return true;
     },
     getControl: function getControl() {
-      return this.$refs.control.$el;
+      var _this$$refs$control;
+
+      return (_this$$refs$control = this.$refs.control) === null || _this$$refs$control === void 0 ? void 0 : _this$$refs$control.$el;
     },
     getMenu: function getMenu() {
       var _this$$refs$menu, _this$$refs$menu$$ref;
@@ -4666,6 +4668,7 @@ var directionMap = {
       this.adjustMenuOpenDirection();
       this.setupMenuSizeWatcher();
       this.setupMenuResizeAndScrollEventListeners();
+      if (this.instance.appendToBody) this.updateMenuContainerOffset();
     },
     onMenuClose: function onMenuClose() {
       this.removeMenuSizeWatcher();

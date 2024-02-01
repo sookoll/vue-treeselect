@@ -242,6 +242,7 @@
         this.adjustMenuOpenDirection()
         this.setupMenuSizeWatcher()
         this.setupMenuResizeAndScrollEventListeners()
+        if (this.instance.appendToBody) this.updateMenuContainerOffset();
       },
 
       onMenuClose() {

@@ -43,7 +43,7 @@
         :open-on-focus="true"
         :clear-on-select="true"
         :isDefaultExpanded="true"
-        :always-open="true"
+        :always-open="false"
         :disableFuzzyMatching="true"
         :defaultExpandLevel="999"
         class="tree-select"

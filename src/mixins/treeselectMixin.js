@@ -1367,7 +1367,7 @@ export default {
     },
 
     getControl() {
-      return this.$refs.control.$el
+      return this.$refs.control?.$el
     },
 
     getMenu() {
