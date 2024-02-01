@@ -402,12 +402,12 @@
           const controlRect = $control.getBoundingClientRect()
 
           const left = Math.round(controlRect.left) + 'px'
-          const top = Math.round(controlRect.bottom) + 'px'
+          const top = Math.round(controlRect.bottom + window.scrollY) + 'px'
           const menuContainerStyle = this.$refs['menu-container'].style
-          //console.log("top", top );
 
-          menuContainerStyle.transform = `translate(${left}, ${top})`
-          //console.log("transform", menuContainerStyle.transform, `translate(${left}, ${top})`)
+
+          menuContainerStyle.top = top;
+          menuContainerStyle.left = left;
         }
       },
 

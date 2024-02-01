@@ -91,7 +91,7 @@
         const transform = find(transformVariations, t => t in document.body.style)
 
         // IE9 doesn't support `translate3d()`.
-        menuContainerStyle[transform] = `translate(${left}, ${top})`
+        //menuContainerStyle[transform] = `translate(${left}, ${top})`
       },
     },
 

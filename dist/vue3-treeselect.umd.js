@@ -4796,10 +4796,10 @@ var directionMap = {
       if ($control) {
         var controlRect = $control.getBoundingClientRect();
         var left = Math.round(controlRect.left) + 'px';
-        var top = Math.round(controlRect.bottom) + 'px';
-        var menuContainerStyle = this.$refs['menu-container'].style; //console.log("top", top );
-
-        menuContainerStyle.transform = "translate(".concat(left, ", ").concat(top, ")"); //console.log("transform", menuContainerStyle.transform, `translate(${left}, ${top})`)
+        var top = Math.round(controlRect.bottom + window.scrollY) + 'px';
+        var menuContainerStyle = this.$refs['menu-container'].style;
+        menuContainerStyle.top = top;
+        menuContainerStyle.left = left;
       }
     }
   },
@@ -4906,8 +4906,7 @@ var PortalTarget = {
       var transform = find(transformVariations, function (t) {
         return t in document.body.style;
       }); // IE9 doesn't support `translate3d()`.
-
-      menuContainerStyle[transform] = "translate(".concat(left, ", ").concat(top, ")");
+      //menuContainerStyle[transform] = `translate(${left}, ${top})`
     }
   },
   render: function render() {
