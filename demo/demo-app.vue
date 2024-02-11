@@ -7,13 +7,44 @@
             noResultsText="No results..."
             placeholder="Select items..."
             v-model="selected"
-            :appendToBody="false"
+            :appendToBody="true"
             :default-expand-level="0"
             :autoSelectDescendants="true"
             :autoDeselectDescendants="true"
             :flat="true"
             :searchable="false"
             :show-count="true"
+        >
+        </vue-treeselect>
+
+        Not appended to body:
+        <vue-treeselect
+            :multiple="false"
+            placement="bottom"
+            :appendToBody="false"
+            :options="[treeData]"
+            noResultsText="No results..."
+            placeholder="Select items..."
+            v-model="selected4"
+            :default-expand-level="0"
+            :autoSelectDescendants="true"
+            :autoDeselectDescendants="true"
+            :flat="true"
+            :searchable="false"
+            :show-count="true"
+
+        :open-on-click="true"
+        :open-on-focus="true"
+        :clear-on-select="true"
+        :isDefaultExpanded="true"
+        :always-open="false"
+        :disabled="read_only"
+        :disableFuzzyMatching="true"
+        :defaultExpandLevel="expandLevel"
+        class="tree-select"
+        :close-on-select="true"
+        :maxHeight="250"
+        open-direction="auto"
         >
         </vue-treeselect>
         </div>
@@ -25,7 +56,7 @@
 
         <div style="margin-top: 100px; margin-left: 100px; max-width:300px;">
         <vue-treeselect
-            :multiple="true"
+            :multiple="false"
             :options="[treeData]"
             placement="top"
             noResultsText="No results..."
@@ -68,7 +99,45 @@
         <p>lorem ipsum dolor sit amet</p>
         <p>lorem ipsum dolor sit amet</p>
         <p>lorem ipsum dolor sit amet</p>
+        <div style="margin-top: 100px; margin-left: 100px; max-width:300px;">
+        <vue-treeselect
+            :multiple="true"
+            :options="[treeData]"
+            placement="top"
+            noResultsText="No results..."
+            placeholder="Select items..."
+            v-model="selected3"
+
+            :appendToBody="true"
+            :default-expand-level="0"
+            :autoSelectDescendants="true"
+            :autoDeselectDescendants="true"
+            :flat="true"
+            :searchable="false"
+            :show-count="true"
+
+            :open-on-click="true"
+            :open-on-focus="true"
+            :clear-on-select="true"
+            :isDefaultExpanded="true"
+            :always-open="false"
+            :disableFuzzyMatching="true"
+            :defaultExpandLevel="999"
+            class="tree-select"
+            :close-on-select="false"
+            :maxHeight="250"
+            open-direction="auto"
+        >
+        </vue-treeselect>
+        </div>
         <p>lorem ipsum dolor sit amet</p>
+        <p>lorem ipsum dolor sit amet</p>
+        <p>lorem ipsum dolor sit amet</p>
+        <p>lorem ipsum dolor sit amet</p>
+        <p>lorem ipsum dolor sit amet</p>
+        <p>lorem ipsum dolor sit amet</p>
+        <p>lorem ipsum dolor sit amet</p>
+
     </div>
 </template>
 <script>
@@ -80,6 +149,8 @@ export default defineComponent({
 
         let selected = ref([]);
         let selected2 = ref([]);
+        let selected3 = ref([]);
+        let selected4 = ref([]);
         let treeOrientation = ref("0");
         let treeData = reactive({
             label: 'root',
@@ -120,7 +191,9 @@ export default defineComponent({
         return {
             treeData,
             selected,
-            selected2
+            selected2,
+            selected3,
+            selected4,
         }
     }
 })

@@ -1,94 +1,53 @@
 {
   "name": "vue3-treeselect",
-  "version": "0.1.1",
-  "description": "Tree select hierarchical component for vue 3 (next)",
+  "version": "0.2.0",
+  "description": "Tree select hierarchical component for vue 3 (next).",
   "author": "megafetis",
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name vue3-treeselect ./src/index.js && webpack --env.production",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/vue3-treeselect.js",
+      "require": "./dist/vue3-treeselect.cjs"
+    },
+    "./dist/": {
+      "import": "./dist/",
+      "require": "./dist/"
+    }
   },
-  "main": "dist/vue3-treeselect.common.js",
-  "unpkg": "dist/vue3-treeselect.umd.js",
+  "main": "./dist/vue3-treeselect.js",
+  "module": "./dist/vue3-treeselect.cjs",
   "files": [
-    "dist/*.js",
-    "dist/*.css",
-    "styles"
+    "./dist/vue3-treeselect.js",
+    "dist/vue3-treeselect.css"
   ],
+  "scripts": {
+    "build": "vite build",
+    "build:watch": "vite build --watch",
+    "dev": "vite"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
   "devDependencies": {
-    "@babel/core": "^7.17.7",
-    "@babel/preset-env": "^7.12.11",
-    "@babel/preset-typescript": "^7.12.7",
-    "@types/ts-nameof": "4.2.1",
-    "@vue/babel-plugin-jsx": "^1.1.1",
-    "@vue/babel-preset-jsx": "1.2.4",
-    "@vue/cli-plugin-babel": "~5.0.4",
-    "@vue/cli-plugin-typescript": "~5.0.4",
-    "@vue/cli-service": "~5.0.4",
-    "@vue/compiler-sfc": "3.2.31",
-    "babel-loader": "^8.1.0",
-    "clean-webpack-plugin": "^3.0.0",
-    "copy-webpack-plugin": "^6.0.3",
-    "css-loader": "^4.2.0",
-    "dotenv": "^16.0.0",
-    "easings-css": "2.0.3",
-    "file-loader": "^6.0.0",
+    "@rollup/plugin-typescript": "^8.2.1",
+    "@types/node": "^17.0.35",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "@vitejs/plugin-vue-jsx": "^3.1.0",
+    "easings-css": "^2.1.1",
     "fuzzysearch": "1.0.3",
-    "html-webpack-plugin": "^4.3.0",
     "is-promise": "4.0.0",
-    "less": "^3.13.0",
-    "less-loader": "^7.1.0",
-    "material-colors": "1.2.6",
-    "mini-css-extract-plugin": "^0.9.0",
-    "resolve-url-loader": "^3.1.2",
-    "sass": "^1.26.10",
-    "sass-loader": "^9.0.3",
-    "style-loader": "^1.2.1",
-    "ts-loader": "^9.2.8",
-    "ts-nameof": "5.0.0",
-    "typescript": "~4.6.3",
-    "url-loader": "^4.1.0",
-    "vue": "^3.2.31",
-    "vue-loader": "17.0.0",
-    "vue-style-loader": "4.1.3",
-    "watch-size": "2.0.0",
-    "webpack": "^5.70.0",
-    "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.7.4",
-    "webpackbar": "^5.0.2"
+    "less": "^4.2.0",
+    "material-colors": "^1.2.6",
+    "prettier": "2.6.2",
+    "rollup-plugin-typescript-paths": "^1.3.0",
+    "tslib": "^2.4.0",
+    "typescript": "^4.7.2",
+    "vite": "5",
+    "vue": "^3.3.11",
+    "watch-size": "2.0.0"
   },
   "peerDependencies": {
     "vue": "^3.0.0"
-  },
-  "browserslist": [
-    "Android >= 4.0",
-    "iOS >= 8"
-  ],
-  "bugs": {
-    "url": "https://github.com/megafetis/vue3-treeselect/issues"
-  },
-  "homepage": "https://github.com/megafetis/vue3-treeselect",
-  "keywords": [
-    "vue",
-    "vue3",
-    "next",
-    "vue next",
-    "tree",
-    "treeselect",
-    "select",
-    "tree select",
-    "hierarchy",
-    "hierarchical"
-  ],
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/megafetis/vue3-treeselect.git"
-  },
-  "sideEffects": [
-    "*.css",
-    "*.less"
-  ],
-  "style": "dist/vue3-treeselect.css",
-  "dependencies": {}
+  }
+
 }

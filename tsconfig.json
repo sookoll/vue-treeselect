@@ -2,8 +2,6 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "esnext",
-    // "isolatedModules":true,
-    // "strict": true,
     "strictPropertyInitialization": false,
     "allowJs": true,
     "jsx": "preserve",
