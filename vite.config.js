@@ -29,10 +29,16 @@ export default defineConfig({
     reportCompressedSize: true,
     lib: {
       entry: path.resolve(__dirname, "src/index.js"),
+      name:'vue3-treeselect',
       fileName: "vue3-treeselect",
       formats: ["es", "cjs"],
     },
     rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'demo/index.html'),
+        //nested: resolve(__dirname, 'nested/index.html'),
+      },
+
       external: ['vue'],
       output: {
         assetFileNames: "vue3-treeselect.[ext]",
