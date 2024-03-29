@@ -987,6 +987,7 @@ export default {
         isLeaf: true,
         isBranch: false,
         isDisabled: false,
+        isSelfDisabled: false,
         isNew: false,
         index: [ -1 ],
         level: 0,
@@ -1536,7 +1537,7 @@ export default {
           const level = isRootNode ? 0 : parentNode.level + 1
           const isBranch = Array.isArray(children) || children === null
           const isLeaf = !isBranch
-          const isDisabled = !!node.isDisabled || (!this.flat && !isRootNode && parentNode.isDisabled)
+          const isDisabled = !!node.isDisabled || !!node.isSelfDisabled || (!this.flat && !isRootNode && parentNode.isDisabled)
           const isNew = !!node.isNew
           const lowerCased = this.matchKeys.reduce((prev, key) => ({
             ...prev,
@@ -1560,6 +1561,7 @@ export default {
           normalized.lowerCased = lowerCased;
           normalized.nestedSearchLabel = nestedSearchLabel;
           normalized.isDisabled = isDisabled;
+          normalized.isSelfDisabled = isSelfDisabled;
           normalized.isNew = isNew;
           normalized.isMatched = false;
           normalized.isHighlighted = false;
@@ -1577,6 +1579,7 @@ export default {
           // this.$ set(normalized, 'lowerCased', lowerCased)
           // this.$ set(normalized, 'nestedSearchLabel', nestedSearchLabel)
           // this.$ set(normalized, 'isDisabled', isDisabled)
+          // this.$ set(normalized, 'isSelfDisabled', isSelfDisabled)
           // this.$ set(normalized, 'isNew', isNew)
           // this.$ set(normalized, 'isMatched', false)
           // this.$ set(normalized, 'isHighlighted', false)
@@ -1593,12 +1596,12 @@ export default {
             //   isLoaded,
             // })
             normalized.childrenStates = {...createAsyncOptionsStates(),isLoaded}
-            
+
             // this.$ set(normalized, 'isExpanded', typeof isDefaultExpanded === 'boolean'
             //   ? isDefaultExpanded
             //   : level < this.defaultExpandLevel)
             normalized.isExpanded = typeof isDefaultExpanded === 'boolean' ? isDefaultExpanded : level < this.defaultExpandLevel;
-            
+
             // this.$ set(normalized, 'hasMatchedDescendants', false)
             // this.$ set(normalized, 'hasDisabledDescendants', false)
             // this.$ set(normalized, 'isExpandedOnSearch', false)
@@ -1800,7 +1803,7 @@ export default {
     },
 
     select(node) {
-      if (this.disabled || node.isDisabled) {
+      if (this.disabled || node.isDisabled || node.isSelfDisabled) {
         return
       }
 
@@ -1846,7 +1849,7 @@ export default {
           this.forest.selectedNodeIds = []
         } else /* if (this.multiple && !this.allowClearingDisabled) */ {
           this.forest.selectedNodeIds = this.forest.selectedNodeIds.filter(nodeId =>
-            this.getNode(nodeId).isDisabled,
+            this.getNode(nodeId).isDisabled || this.getNode(nodeId).isSelfDisabled,
           )
         }
 
@@ -1865,11 +1868,11 @@ export default {
 
         if (this.autoSelectAncestors) {
           node.ancestors.forEach(ancestor => {
-            if (!this.isSelected(ancestor) && !ancestor.isDisabled) this.addValue(ancestor)
+            if (!this.isSelected(ancestor) && !ancestor.isDisabled && !ancestor.isSelfDisabled) this.addValue(ancestor)
           })
         } else if (this.autoSelectDescendants) {
           this.traverseDescendantsBFS(node, descendant => {
-            if (!this.isSelected(descendant) && !descendant.isDisabled) this.addValue(descendant)
+            if (!this.isSelected(descendant) && !descendant.isDisabled && !descendant.isSelfDisabled) this.addValue(descendant)
           })
         }
 
@@ -1887,7 +1890,7 @@ export default {
 
       if (node.isBranch) {
         this.traverseDescendantsBFS(node, descendant => {
-          if (!descendant.isDisabled || this.allowSelectingDisabledDescendants) {
+          if (!descendant.isDisabled || !descendant.isSelfDisabled || this.allowSelectingDisabledDescendants) {
             this.addValue(descendant)
           }
         })
@@ -1913,11 +1916,11 @@ export default {
 
         if (this.autoDeselectAncestors) {
           node.ancestors.forEach(ancestor => {
-            if (this.isSelected(ancestor) && !ancestor.isDisabled) this.removeValue(ancestor)
+            if (this.isSelected(ancestor) && !ancestor.isDisabled && !ancestor.isSelfDisabled) this.removeValue(ancestor)
           })
         } else if (this.autoDeselectDescendants) {
           this.traverseDescendantsBFS(node, descendant => {
-            if (this.isSelected(descendant) && !descendant.isDisabled) this.removeValue(descendant)
+            if (this.isSelected(descendant) && !descendant.isDisabled && !descendant.isSelfDisabled) this.removeValue(descendant)
           })
         }
 
@@ -1927,7 +1930,7 @@ export default {
       let hasUncheckedSomeDescendants = false
       if (node.isBranch) {
         this.traverseDescendantsDFS(node, descendant => {
-          if (!descendant.isDisabled || this.allowSelectingDisabledDescendants) {
+          if (!descendant.isDisabled || !descendant.isSelfDisabled || this.allowSelectingDisabledDescendants) {
             this.removeValue(descendant)
             hasUncheckedSomeDescendants = true
           }
