@@ -147,7 +147,7 @@ export default defineComponent({
 
     setup() {
 
-        let selected = ref([]);
+        let selected = ref([2,1]);
         let selected2 = ref([]);
         let selected3 = ref([]);
         let selected4 = ref([]);
