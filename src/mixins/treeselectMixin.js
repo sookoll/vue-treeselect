@@ -1537,7 +1537,8 @@ export default {
           const level = isRootNode ? 0 : parentNode.level + 1
           const isBranch = Array.isArray(children) || children === null
           const isLeaf = !isBranch
-          const isDisabled = !!node.isDisabled || !!node.isSelfDisabled || (!this.flat && !isRootNode && parentNode.isDisabled)
+          const isDisabled = !!node.isDisabled || (!this.flat && !isRootNode && parentNode.isDisabled)
+          const isSelfDisabled = !!node.isSelfDisabled
           const isNew = !!node.isNew
           const lowerCased = this.matchKeys.reduce((prev, key) => ({
             ...prev,
