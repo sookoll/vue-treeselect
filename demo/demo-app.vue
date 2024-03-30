@@ -163,6 +163,7 @@ export default defineComponent({
                     label: 'subparent 1', 
                     id: 4, 
                     expand: false, 
+                    isSelfDisabled: true,
                     children: [
                         { label: 'subchild 1', id: 5 },
                         {  

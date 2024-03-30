@@ -24,7 +24,7 @@ import { createVNode as o, mergeProps as je, openBlock as F, createElementBlock 
   }
 })();
 var P = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {};
-function C(e) {
+function D(e) {
   return e && e.__esModule && Object.prototype.hasOwnProperty.call(e, "default") ? e.default : e;
 }
 function Je(e, t) {
@@ -43,11 +43,11 @@ function Je(e, t) {
   return !0;
 }
 var Ze = Je;
-const et = /* @__PURE__ */ C(Ze);
+const et = /* @__PURE__ */ D(Ze);
 function tt() {
 }
 var st = tt;
-const nt = /* @__PURE__ */ C(st), _ = process.env.NODE_ENV === "production" ? (
+const nt = /* @__PURE__ */ D(st), _ = process.env.NODE_ENV === "production" ? (
   /* istanbul ignore next */
   nt
 ) : function(t, s) {
@@ -72,7 +72,7 @@ function rt(e) {
   var t = typeof e;
   return e != null && (t == "object" || t == "function");
 }
-var Ce = rt, ot = typeof P == "object" && P && P.Object === Object && P, lt = ot, at = lt, ct = typeof self == "object" && self && self.Object === Object && self, ut = at || ct || Function("return this")(), De = ut, dt = De, ht = function() {
+var De = rt, ot = typeof P == "object" && P && P.Object === Object && P, lt = ot, at = lt, ct = typeof self == "object" && self && self.Object === Object && self, ut = at || ct || Function("return this")(), Ce = ut, dt = Ce, ht = function() {
   return dt.Date.now();
 }, pt = ht, ft = /\s/;
 function mt(e) {
@@ -84,7 +84,7 @@ var gt = mt, vt = gt, St = /^\s+/;
 function bt(e) {
   return e && e.slice(0, vt(e) + 1).replace(St, "");
 }
-var yt = bt, Ot = De, _t = Ot.Symbol, Me = _t, ce = Me, Te = Object.prototype, Nt = Te.hasOwnProperty, Et = Te.toString, A = ce ? ce.toStringTag : void 0;
+var yt = bt, Ot = Ce, _t = Ot.Symbol, Me = _t, ce = Me, Te = Object.prototype, Nt = Te.hasOwnProperty, Et = Te.toString, A = ce ? ce.toStringTag : void 0;
 function wt(e) {
   var t = Nt.call(e, A), s = e[A];
   try {
@@ -95,9 +95,9 @@ function wt(e) {
   var i = Et.call(e);
   return n && (t ? e[A] = s : delete e[A]), i;
 }
-var Lt = wt, Ct = Object.prototype, Dt = Ct.toString;
+var Lt = wt, Dt = Object.prototype, Ct = Dt.toString;
 function Mt(e) {
-  return Dt.call(e);
+  return Ct.call(e);
 }
 var Tt = Mt, ue = Me, xt = Lt, It = Tt, Rt = "[object Null]", At = "[object Undefined]", de = ue ? ue.toStringTag : void 0;
 function $t(e) {
@@ -111,7 +111,7 @@ var zt = Vt, kt = Bt, Ft = zt, Ht = "[object Symbol]";
 function Wt(e) {
   return typeof e == "symbol" || Ft(e) && kt(e) == Ht;
 }
-var Pt = Wt, jt = yt, he = Ce, Qt = Pt, pe = NaN, Ut = /^[-+]0x[0-9a-f]+$/i, Kt = /^0b[01]+$/i, qt = /^0o[0-7]+$/i, Yt = parseInt;
+var Pt = Wt, jt = yt, he = De, Qt = Pt, pe = NaN, Ut = /^[-+]0x[0-9a-f]+$/i, Kt = /^0b[01]+$/i, qt = /^0o[0-7]+$/i, Yt = parseInt;
 function Xt(e) {
   if (typeof e == "number")
     return e;
@@ -127,7 +127,7 @@ function Xt(e) {
   var s = Kt.test(e);
   return s || qt.test(e) ? Yt(e.slice(2), s ? 2 : 8) : Ut.test(e) ? pe : +e;
 }
-var xe = Xt, Gt = Ce, Y = pt, fe = xe, Jt = "Expected a function", Zt = Math.max, es = Math.min;
+var xe = Xt, Gt = De, Y = pt, fe = xe, Jt = "Expected a function", Zt = Math.max, es = Math.min;
 function ts(e, t, s) {
   var n, i, r, l, c, h, p = 0, v = !1, f = !1, S = !0;
   if (typeof e != "function")
@@ -138,7 +138,7 @@ function ts(e, t, s) {
     return n = i = void 0, p = u, l = e.apply(I, O), l;
   }
   function x(u) {
-    return p = u, c = setTimeout(D, t), v ? E(u) : l;
+    return p = u, c = setTimeout(C, t), v ? E(u) : l;
   }
   function H(u) {
     var O = u - h, I = u - p, ae = t - O;
@@ -148,11 +148,11 @@ function ts(e, t, s) {
     var O = u - h, I = u - p;
     return h === void 0 || O >= t || O < 0 || f && I >= r;
   }
-  function D() {
+  function C() {
     var u = Y();
     if (W(u))
       return M(u);
-    c = setTimeout(D, H(u));
+    c = setTimeout(C, H(u));
   }
   function M(u) {
     return c = void 0, S && n ? E(u) : (n = i = void 0, l);
@@ -169,14 +169,14 @@ function ts(e, t, s) {
       if (c === void 0)
         return x(h);
       if (f)
-        return clearTimeout(c), c = setTimeout(D, t), E(h);
+        return clearTimeout(c), c = setTimeout(C, t), E(h);
     }
-    return c === void 0 && (c = setTimeout(D, t)), l;
+    return c === void 0 && (c = setTimeout(C, t)), l;
   }
   return d.cancel = q, d.flush = a, d;
 }
 var ss = ts;
-const ns = /* @__PURE__ */ C(ss);
+const ns = /* @__PURE__ */ D(ss);
 var is = function(e, t) {
   var s = document.createElement("_"), n = s.appendChild(document.createElement("_")), i = s.appendChild(document.createElement("_")), r = n.appendChild(document.createElement("_")), l = void 0, c = void 0;
   return n.style.cssText = s.style.cssText = "height:100%;left:0;opacity:0;overflow:hidden;pointer-events:none;position:absolute;top:0;transition:0s;width:100%;z-index:-1", r.style.cssText = i.style.cssText = "display:block;height:100%;transition:0s;width:100%", r.style.width = r.style.height = "200%", e.appendChild(s), h(), v;
@@ -283,19 +283,19 @@ function Ns(e) {
   return _s(2, e);
 }
 var Es = Ns;
-const ws = /* @__PURE__ */ C(Es);
+const ws = /* @__PURE__ */ D(Es);
 function Ls(e) {
   return e;
 }
-var Cs = Ls;
-const Ds = /* @__PURE__ */ C(Cs);
+var Ds = Ls;
+const Cs = /* @__PURE__ */ D(Ds);
 function Ms(e) {
   return function() {
     return e;
   };
 }
 var Ts = Ms;
-const Se = /* @__PURE__ */ C(Ts), b = () => /* @__PURE__ */ Object.create(null);
+const Se = /* @__PURE__ */ D(Ts), b = () => /* @__PURE__ */ Object.create(null);
 function Be(e) {
   return e == null || typeof e != "object" ? !1 : Object.getPrototypeOf(e) === Object.prototype;
 }
@@ -315,7 +315,7 @@ function Is(e) {
   return t ? e[t - 1] : void 0;
 }
 var Rs = Is;
-const be = /* @__PURE__ */ C(Rs);
+const be = /* @__PURE__ */ D(Rs);
 function N(e, t) {
   return e.indexOf(t) !== -1;
 }
@@ -710,7 +710,7 @@ const Ws = {
      */
     normalizer: {
       type: Function,
-      default: Ds
+      default: Cs
     },
     /**
      * By default (`auto`), the menu will open below the control. If there is not
@@ -1407,13 +1407,13 @@ const Ws = {
     normalize(e, t, s) {
       let n = t.map((i) => [this.enhancedNormalizer(i), i]).map(([i, r], l) => {
         this.checkDuplication(i), this.verifyNodeShape(i);
-        const { id: c, label: h, children: p, isDefaultExpanded: v } = i, f = e === w, S = f ? 0 : e.level + 1, E = Array.isArray(p) || p === null, x = !E, H = !!i.isDisabled || !this.flat && !f && e.isDisabled, W = !!i.isSelfDisabled, D = !!i.isNew, M = this.matchKeys.reduce((d, u) => ({
+        const { id: c, label: h, children: p, isDefaultExpanded: v } = i, f = e === w, S = f ? 0 : e.level + 1, E = Array.isArray(p) || p === null, x = !E, H = !!i.isDisabled || !this.flat && !f && e.isDisabled, W = !!i.isSelfDisabled, C = !!i.isNew, M = this.matchKeys.reduce((d, u) => ({
           ...d,
           [u]: Fs(i[u]).toLocaleLowerCase()
         }), {}), q = f ? M.label : e.nestedSearchLabel + " " + M.label;
         this.forest.nodeMap[c] = b();
         const a = this.forest.nodeMap[c];
-        if (a.id = c, a.label = h, a.level = S, a.ancestors = f ? [] : [e].concat(e.ancestors), a.index = (f ? [] : e.index).concat(l), a.parentNode = e, a.lowerCased = M, a.nestedSearchLabel = q, a.isDisabled = H, a.isSelfDisabled = W, a.isNew = D, a.isMatched = !1, a.isHighlighted = !1, a.isBranch = E, a.isLeaf = x, a.isRootNode = f, a.raw = r, E) {
+        if (a.id = c, a.label = h, a.level = S, a.ancestors = f ? [] : [e].concat(e.ancestors), a.index = (f ? [] : e.index).concat(l), a.parentNode = e, a.lowerCased = M, a.nestedSearchLabel = q, a.isDisabled = H, a.isSelfDisabled = W, a.isNew = C, a.isMatched = !1, a.isHighlighted = !1, a.isBranch = E, a.isLeaf = x, a.isRootNode = f, a.raw = r, E) {
           const d = Array.isArray(p);
           a.childrenStates = { ...ee(), isLoaded: d }, a.isExpanded = typeof v == "boolean" ? v : S < this.defaultExpandLevel, a.hasMatchedDescendants = !1, a.hasDisabledDescendants = !1, a.isExpandedOnSearch = !1, a.showAllChildrenOnSearch = !1, a.count = {
             [T]: 0,
@@ -2654,6 +2654,7 @@ const hn = /* @__PURE__ */ K(un, [["render", dn]]), pn = Le({
             label: "subparent 1",
             id: 4,
             expand: !1,
+            isSelfDisabled: !0,
             children: [
               { label: "subchild 1", id: 5 },
               {
