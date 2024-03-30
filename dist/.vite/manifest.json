@@ -1,7 +1,7 @@
 {
-  "demo/index.html": {
+  "src/index.js": {
     "file": "vue3-treeselect.cjs",
-    "src": "demo/index.html",
+    "src": "src/index.js",
     "isEntry": true
   },
   "style.css": {

@@ -3,7 +3,8 @@ import Treeselect from '~/components/Treeselect.vue';
 import '../styles/style.less';
 
 export default Treeselect
-//export { Treeselect, treeselectMixin }
+export { Treeselect }
+
 /*
 export {
   // Delayed loading.

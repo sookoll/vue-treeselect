@@ -34,10 +34,10 @@ export default defineConfig({
       formats: ["es", "cjs"],
     },
     rollupOptions: {
-      input: {
+      /*input: {
         main: path.resolve(__dirname, 'demo/index.html'),
         //nested: resolve(__dirname, 'nested/index.html'),
-      },
+      },*/
 
       external: ['vue'],
       output: {
