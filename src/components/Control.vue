@@ -47,7 +47,7 @@ export default {
       const { instance } = this;
 
       return instance.hasValue && instance.internalValue.some(id =>
-        !instance.getNode(id).isDisabled || !instance.getNode(id).isSelfDisabled
+        !instance.getNode(id).isDisabled || !instance.getNode(id).isUnselectable
       );
     },
     /* eslint-enable valid-jsdoc */

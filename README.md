@@ -173,3 +173,13 @@ Some icons used in this project:
 ### License
 
 Released under the [MIT License](https://github.com/megafetis/vue3-treeselect/blob/master/LICENSE).
+
+
+### New features (on top of the original library)
+
+- Added isUnselectable option to prevent selection of certain nodes
+- Unselectable options will always toggle the branch (collapse/expand)
+- Comptabile with Vue3
+- Uses vite as build tool
+
+- TODO: Docs are not up to date.

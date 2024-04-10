@@ -852,6 +852,10 @@
 
     color: @treeselect-option-label-color-disabled;
   }
+
+  .vue-treeselect__option--unselectable & {
+    .forbidden();
+  }
 }
 
 .vue-treeselect__checkbox-container {
@@ -902,6 +906,10 @@
   .vue-treeselect__checkbox--disabled & {
     .retina(@treeselect-checkbox-disabled-indeterminate-icon, 3);
   }
+
+  .vue-treeselect__checkbox--unselectable & {
+    .retina(@treeselect-checkbox-disabled-indeterminate-icon, 3);
+  }
 }
 
 .vue-treeselect__check-mark {
@@ -918,6 +926,9 @@
   }
 
   .vue-treeselect__checkbox--disabled & {
+    .retina(@treeselect-checkbox-disabled-checked-icon, 3);
+  }
+  .vue-treeselect__checkbox--unselectable & {
     .retina(@treeselect-checkbox-disabled-checked-icon, 3);
   }
 }
@@ -962,6 +973,14 @@
   }
 }
 
+
+.vue-treeselect__checkbox--unselectable {
+  border-color: @treeselect-checkbox-disabled-border-color;
+
+  .vue-treeselect__label-container:hover & {
+    border-color: @treeselect-checkbox-disabled-border-color;
+  }
+}
 
 .vue-treeselect__label {
   .text-truncate();

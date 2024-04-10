@@ -35,7 +35,8 @@ const Option = {
       const { instance, node } = this;
       const optionClass = {
         'vue-treeselect__option': true,
-        'vue-treeselect__option--disabled': node.isDisabled || node.isSelfDisabled,
+        'vue-treeselect__option--disabled': node.isDisabled ,
+        'vue-treeselect__option--unselectable': node.isUnselectable ,
         'vue-treeselect__option--selected': instance.isSelected(node),
         'vue-treeselect__option--highlight': node.isHighlighted,
         'vue-treeselect__option--matched': instance.localSearch.active && node.isMatched,
@@ -119,7 +120,8 @@ const Option = {
         'vue-treeselect__checkbox--checked': checkedState === CHECKED,
         'vue-treeselect__checkbox--indeterminate': checkedState === INDETERMINATE,
         'vue-treeselect__checkbox--unchecked': checkedState === UNCHECKED,
-        'vue-treeselect__checkbox--disabled': node.isDisabled || node.isSelfDisabled,
+        'vue-treeselect__checkbox--disabled': node.isDisabled,
+        'vue-treeselect__checkbox--unselectable': node.isUnselectable,
       };
 
       if (!checkMark) checkMark = <span class="vue-treeselect__check-mark" />;
@@ -227,7 +229,8 @@ const Option = {
     handleMouseDownOnLabelContainer: onLeftClick(function handleMouseDownOnLabelContainer() {
       const { instance, node } = this;
 
-      if (node.isBranch && instance.disableBranchNodes) {
+      if (node.isBranch && (node.isUnselectable || instance.disableBranchNodes)) {
+        // check if this is unselectable
         instance.toggleExpanded(node);
       } else {
         instance.select(node);

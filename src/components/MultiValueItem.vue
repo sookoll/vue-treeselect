@@ -26,7 +26,7 @@ export default {
     const { instance, node } = this;
     const itemClass = {
       'vue-treeselect__multi-value-item': true,
-      'vue-treeselect__multi-value-item-disabled': node.isDisabled || node.isSelfDisabled,
+      'vue-treeselect__multi-value-item-disabled': node.isDisabled || node.isUnselectable,
       'vue-treeselect__multi-value-item-new': node.isNew,
     };
     const customValueLabelRenderer = instance.$slots['value-label'];
