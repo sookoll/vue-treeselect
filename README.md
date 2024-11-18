@@ -1,5 +1,6 @@
-# vue3-treeselect
+# vue-treeselect
 
+> This is Vue3 compat release of vue3-treeselect
 > A multi-select component with nested options support for Vue 3 compat.
 > Thank to [riophae](https://github.com/riophae/vue-treeselect) and his sources and library for vue 2 taken as basis.
 
