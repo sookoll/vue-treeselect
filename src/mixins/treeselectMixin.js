@@ -69,6 +69,8 @@ export default {
     }
   },
 
+  emits: ['update:modelValue', 'updated', 'search-change', 'close', 'open', 'select', 'deselect'],
+
   props: {
     /**
      * Whether to allow resetting value even if there are disabled selected nodes.
@@ -599,6 +601,7 @@ export default {
      * @type {?Array}
      */
     modelValue: null,
+    value: null,
 
     /**
      * Which kind of nodes should be included in the `value` array in multi-select mode.
@@ -835,7 +838,10 @@ export default {
       // #122
       // Vue would trigger this watcher when `newValue` and `oldValue` are shallow-equal.
       // We emit the `input` event only when the value actually changes.
-      if (hasChanged) this.$emit('update:modelValue', this.getValue(), this.getInstanceId())
+      if (hasChanged) {
+        this.$emit('update:modelValue', this.getValue(), this.getInstanceId())
+        this.$emit('updated', this.getValue(), this.getInstanceId())
+      }
     },
 
     matchKeys() {
@@ -870,7 +876,7 @@ export default {
       this.$emit('search-change', this.trigger.searchQuery, this.getInstanceId())
     },
 
-    modelValue() {
+    value() {
       const nodeIdsFromValue = this.extractCheckedNodeIdsFromValue()
       const hasChanged = quickDiff(nodeIdsFromValue, this.internalValue)
       if (hasChanged) this.fixSelectedNodeIds(nodeIdsFromValue)
@@ -999,15 +1005,17 @@ export default {
     },
 
     extractCheckedNodeIdsFromValue() {
-      if (this.modelValue == null) return []
+      if (this.value === null || this.value === undefined) {
+        return []
+      }
 
       if (this.valueFormat === 'id') {
         return this.multiple
-          ? this.modelValue.slice()
-          : [ this.modelValue ]
+          ? this.value.slice()
+          : [ this.value ]
       }
 
-      return (this.multiple ? this.modelValue : [ this.modelValue ])
+      return (this.multiple ? this.value : [ this.value ])
         .map(node => this.enhancedNormalizer(node))
         .map(node => node.id)
     },
@@ -1020,8 +1028,8 @@ export default {
       }
 
       const valueArray = this.multiple
-        ? Array.isArray(this.modelValue) ? this.modelValue : []
-        : this.modelValue ? [ this.modelValue ] : []
+        ? Array.isArray(this.value) ? this.value : []
+        : this.value ? [ this.value ] : []
       const matched = find(
         valueArray,
         node => node && this.enhancedNormalizer(node).id === id,

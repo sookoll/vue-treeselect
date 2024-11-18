@@ -242,6 +242,7 @@ export default {
 
     renderNoResultsTip() {
       const { instance } = this;
+
       return (
         <Tip type="no-results" icon="warning">
           {instance.noResultsText}
